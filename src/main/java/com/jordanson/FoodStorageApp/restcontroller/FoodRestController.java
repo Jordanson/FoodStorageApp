@@ -9,20 +9,24 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.jordanson.FoodStorageApp.dao.ContainerDAO;
 import com.jordanson.FoodStorageApp.dao.FoodDAO;
 import com.jordanson.FoodStorageApp.entity.Container;
 import com.jordanson.FoodStorageApp.entity.Food;
+import com.jordanson.FoodStorageApp.service.FoodService;
 
 
-
+@RestController
 public class FoodRestController {
 	private FoodDAO foodDAO;
+	private FoodService service;
 	
 	@Autowired
-	public FoodRestController(FoodDAO foodDAO) {
+	public FoodRestController(FoodDAO foodDAO, FoodService service) {
 		this.foodDAO = foodDAO;
+		this.service = service;
 	}
 	
 	@GetMapping("/food")
@@ -31,7 +35,7 @@ public class FoodRestController {
 	}
 
 	@GetMapping("/food/{foodId}")
-	public Food getFoodByID(@PathVariable int foodId) {
+	public Food getFoodByID(@PathVariable long foodId) {
 		Food food = foodDAO.findById(foodId);
 		
 		if (food == null) {
@@ -42,13 +46,14 @@ public class FoodRestController {
 	}
 	
 	//why return here?
-	@PostMapping("/food")
-	public Food addFood(@RequestBody Food food) {
+	@PostMapping("/food/{containerId}")
+	public Food addFood(@RequestBody Food food, @PathVariable long containerId) {
 		//just in case they pass an id in JSON, set id to zero 
 		//this is to force a save of new item, instead of update 
 		food.setId(0);
 		
-		foodDAO.save(food);
+		service.save(food, containerId);
+		//foodDAO.save(food);
 		
 		return food;
 	}
@@ -65,7 +70,7 @@ public class FoodRestController {
 	}
 	
 	@DeleteMapping("/food/{foodId}")
-	public String deleteFood(@PathVariable int foodId) {
+	public String deleteFood(@PathVariable long foodId) {
 		Food food = foodDAO.findById(foodId);
 		
 		if (food == null) {

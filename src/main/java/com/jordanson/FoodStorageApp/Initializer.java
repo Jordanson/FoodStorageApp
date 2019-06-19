@@ -35,13 +35,15 @@ class Initializer implements CommandLineRunner {
     	//and the next method uses that same object to allow for method chaining
     	//at the end the buildFood method returns the FoodBuilder object to the private constructor in the outer class
 
-//		Food s1 = new Food.FoodBuilder("cheese", "dairy").buildFood();
 
 //    	fridge.addFood(hotdog);
 //      containerDAO.save(fridge);
     	long num = 2L;
-    	//foodDAO.deleteById(num);
-    	containerDAO.deleteById(2);
+
+    	//Container container = containerDAO.findById(1L);
+    	//container.addFood(new Food.FoodBuilder("cheese", "dairy").buildFood());
+    	//containerDAO.save(container);
+    
     	
     }
 }

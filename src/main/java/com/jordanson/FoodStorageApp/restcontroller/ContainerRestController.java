@@ -9,12 +9,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.jordanson.FoodStorageApp.dao.ContainerDAO;
 import com.jordanson.FoodStorageApp.entity.Container;
 
 
-
+@RestController
 public class ContainerRestController {
 	private ContainerDAO containerDAO;
 	
@@ -29,7 +30,7 @@ public class ContainerRestController {
 	}
 
 	@GetMapping("/containers/{containerId}")
-	public Container getContainerByID(@PathVariable int containerId) {
+	public Container getContainerByID(@PathVariable long containerId) {
 		Container container = containerDAO.findById(containerId);
 		
 		if (container == null) {
@@ -63,7 +64,7 @@ public class ContainerRestController {
 	}
 	
 	@DeleteMapping("/containers/{containerId}")
-	public String deleteContainer(@PathVariable int containerId) {
+	public String deleteContainer(@PathVariable long containerId) {
 		Container container = containerDAO.findById(containerId);
 		
 		if (container == null) {
