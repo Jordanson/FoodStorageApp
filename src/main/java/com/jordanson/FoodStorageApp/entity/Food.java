@@ -107,11 +107,11 @@ public class Food {
 		this.container = container;
 	}
 
-	@Override
-	public String toString() {
-		return "Food [id=" + id + ", name=" + name + ", type=" + type + ", description=" + description + ", expiration="
-				+ expiration + ", quantity=" + quantity + ", container=" + container + "]";
-	}
+//	@Override
+//	public String toString() {
+//		return "Food [id=" + id + ", name=" + name + ", type=" + type + ", description=" + description + ", expiration="
+//				+ expiration + ", quantity=" + quantity + ", container=" + container + "]";
+//	}
 	
 	
 	public static class FoodBuilder {
@@ -121,9 +121,10 @@ public class Food {
 		private LocalDate expiration;
 		private int quantity;
 		
-		public FoodBuilder(String name, String type) {
+		public FoodBuilder(String name, String type, int quantity) {
 			this.name = name;
 			this.type = type;
+			this.quantity = quantity;
 		}
 		
 		public FoodBuilder setDescription(String description) {
@@ -133,11 +134,6 @@ public class Food {
 		
 		public FoodBuilder setExpiration(LocalDate expiration) {
 			this.expiration = expiration;
-			return this;
-		}
-		
-		public FoodBuilder setQuantity(int quantity) {
-			this.quantity = quantity;
 			return this;
 		}
 		

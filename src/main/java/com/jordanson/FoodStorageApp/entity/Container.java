@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="container")
 public class Container {
@@ -24,6 +26,7 @@ public class Container {
 	@Column(name="name")
 	private String name;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="container", cascade={CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH}, orphanRemoval=true)
 	private List<Food> foodList;
 	
@@ -59,7 +62,7 @@ public class Container {
 	public void setName(String name) {
 		this.name = name;
 	}
-
+  
 	public List<Food> getFoodList() {
 		return foodList;
 	}
@@ -68,8 +71,8 @@ public class Container {
 		this.foodList = foodList;
 	}
 
-	@Override
-	public String toString() {
-		return "Container [id=" + id + ", name=" + name + ", foodList=" + foodList + "]";
-	}
+//	@Override
+//	public String toString() {
+//		return "Container [id=" + id + ", name=" + name + ", foodList=" + foodList + "]";
+//	}
 }

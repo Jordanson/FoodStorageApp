@@ -4,12 +4,15 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+//import org.hibernate.query.Query;
 
+import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.jordanson.FoodStorageApp.entity.Container;
+import com.jordanson.FoodStorageApp.entity.Food;
 
 //jpa implementation
 @Transactional
@@ -28,6 +31,17 @@ public class ContainerDAO {
 		List<Container> containers = query.getResultList();
 		
 		return containers;
+		// get the current hibernate session
+//				Session currentSession = em.unwrap(Session.class);
+//				
+//				//create the query
+//				Query<Container> query = currentSession.createQuery("from Container", Container.class);
+//				
+//				//execute query and get result list
+//				List<Container> container = query.getResultList();
+//				
+//				//return the results
+//				return container;
 	}
 
 	public Container findById(long id) {

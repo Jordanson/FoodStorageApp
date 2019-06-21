@@ -25,12 +25,12 @@ class Initializer implements CommandLineRunner {
 
     @Override
     public void run(String... strings) {
-    	Container fridge = new Container("fridge");
-    	Food hotdog = new Food.FoodBuilder("hotdogs", "meat")
-				.setQuantity(10)
-				.setExpiration(LocalDate.now())
-				.setDescription("kosher")
-				.buildFood();
+//    	Container fridge = new Container("fridge");
+//    	Food hotdog = new Food.FoodBuilder("hotdogs", "meat")
+//				.setQuantity(10)
+//				.setExpiration(LocalDate.now())
+//				.setDescription("kosher")
+//				.buildFood();
     	//each method is returning the FoodBuilder object (this)
     	//and the next method uses that same object to allow for method chaining
     	//at the end the buildFood method returns the FoodBuilder object to the private constructor in the outer class
@@ -39,6 +39,7 @@ class Initializer implements CommandLineRunner {
 //    	fridge.addFood(hotdog);
 //      containerDAO.save(fridge);
     	long num = 2L;
+
 
     	//Container container = containerDAO.findById(1L);
     	//container.addFood(new Food.FoodBuilder("cheese", "dairy").buildFood());
