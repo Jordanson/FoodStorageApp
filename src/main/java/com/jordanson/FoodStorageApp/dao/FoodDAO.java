@@ -55,6 +55,13 @@ public class FoodDAO {
 		
 		currentSession.saveOrUpdate(food);
 	}
+	
+	public void update(Food food) {
+		Session currentSession = em.unwrap(Session.class);
+		
+		
+		currentSession.merge(food);
+	}
 
 	public void deleteById(long id) {
 		Session currentSession = em.unwrap(Session.class);

@@ -32,9 +32,6 @@ public class Food {
 	@Column(name="date")
 	private LocalDate expiration;
 	
-	@Column(name="quantity")
-	private int quantity;
-	
 	@ManyToOne
 	@JoinColumn(name="container_id", foreignKey = @ForeignKey(name = "FK_FOOD"))
 	private Container container;
@@ -44,7 +41,6 @@ public class Food {
 		this.type = foodbuilder.type;
 		this.description = foodbuilder.description;
 		this.expiration = foodbuilder.expiration;
-		this.quantity = foodbuilder.quantity;
 	}
 	
 	public Food() {
@@ -91,14 +87,6 @@ public class Food {
 		this.expiration = expiration;
 	}
 
-	public int getQuantity() {
-		return quantity;
-	}
-
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
-	}
-
 	public Container getContainer() {
 		return container;
 	}
@@ -107,11 +95,11 @@ public class Food {
 		this.container = container;
 	}
 
-//	@Override
-//	public String toString() {
-//		return "Food [id=" + id + ", name=" + name + ", type=" + type + ", description=" + description + ", expiration="
-//				+ expiration + ", quantity=" + quantity + ", container=" + container + "]";
-//	}
+	@Override
+	public String toString() {
+		return "Food [id=" + id + ", name=" + name + ", type=" + type + ", description=" + description + ", expiration="
+				+ expiration + ", container=" + container.getName() + "]";
+	}
 	
 	
 	public static class FoodBuilder {
@@ -119,12 +107,10 @@ public class Food {
 		private String type;
 		private String description;
 		private LocalDate expiration;
-		private int quantity;
 		
-		public FoodBuilder(String name, String type, int quantity) {
+		public FoodBuilder(String name, String type) {
 			this.name = name;
 			this.type = type;
-			this.quantity = quantity;
 		}
 		
 		public FoodBuilder setDescription(String description) {

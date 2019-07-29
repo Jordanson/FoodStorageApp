@@ -45,6 +45,12 @@ public class FoodRestController {
 		return food;
 	}
 	
+	
+	@GetMapping("/food/containers/{containerId}")
+	public List<Food> getFoodByContainer(@PathVariable long containerId) {
+		return service.getFoodByContainer(containerId).getFoodList();
+	}
+	
 	//why return here?
 	@PostMapping("/food/{containerId}")
 	public Food addFood(@RequestBody Food food, @PathVariable long containerId) {
@@ -61,8 +67,8 @@ public class FoodRestController {
 	//why return here as well?
 	@PutMapping("/food")
 	public Food updateFood(@RequestBody Food food) {
-		foodDAO.save(food);
-		
+		System.out.println(food.getContainer());
+		service.update(food);
 		return food;
 		//despite postman returning the updated data, i could not get mysql to reflect the changes
 		//until i added @Transactional to the "save" method in the Service layer. 

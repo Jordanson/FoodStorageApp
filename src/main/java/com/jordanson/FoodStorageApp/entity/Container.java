@@ -26,7 +26,8 @@ public class Container {
 	@Column(name="name")
 	private String name;
 	
-	@JsonIgnore
+	
+    @JsonIgnore
 	@OneToMany(mappedBy="container", cascade={CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH}, orphanRemoval=true)
 	private List<Food> foodList;
 	
@@ -71,8 +72,8 @@ public class Container {
 		this.foodList = foodList;
 	}
 
-//	@Override
-//	public String toString() {
-//		return "Container [id=" + id + ", name=" + name + ", foodList=" + foodList + "]";
-//	}
+	@Override
+	public String toString() {
+		return "Container [id=" + id + ", name=" + name + ", foodList= " + foodList;
+	}
 }
