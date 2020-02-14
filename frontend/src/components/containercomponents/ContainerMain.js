@@ -14,13 +14,19 @@ const ContainerMain = (props) => {
   }
 
   const deleteContainer = async (containerId) => {
-    setContainers(containers.filter(container => container.id !== containerId))
+    let result = window.confirm("Are you sure you want to delete your " + containers.find(container => container.id === containerId).name + "?");
+    if (result) {
+        setContainers(containers.filter(container => container.id !== containerId))
 
-    fetch(`api/containers/${containerId}`, {
-         method: 'DELETE',
-    })
-    .then(res => res.json()) // or res.json()
-    .then(res => console.log(res))
+        fetch(`api/containers/${containerId}`, {
+             method: 'DELETE',
+        })
+        .then(res => res.json()) // or res.json()
+        .then(res => console.log(res))
+    } 
+    else {
+        return
+    }
   }
 
   useEffect(() => {
