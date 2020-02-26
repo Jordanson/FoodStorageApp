@@ -18,7 +18,7 @@ const AddFoodForm = () => {
   }
 
   const postFood = async (newFood) => {
-    let response = await fetch(`/api/food/${5}`, {
+    let response = await fetch(`/api/food/${7}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json;charset=utf-8'

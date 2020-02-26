@@ -43,7 +43,12 @@ const ContainerMain = (props) => {
           <li key={container.id}>
             <div>
               <button onClick={() => deleteContainer(container.id)} className="button is-rounded is-danger">Delete</button>
-              <Link to={`/listfood/${container.id}`}>{container.name}</Link>
+              {/* <Link to={`/containercontents/${container.id}`}>{container.name}</Link> */}
+              <Link to={{
+                  pathname: `/containercontents/${container.name}`,
+                  state: {container: container}
+                }}>{container.name}
+              </Link>
             </div>
           </li>
         ))}

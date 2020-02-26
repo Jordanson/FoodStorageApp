@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
-//import ListContainers from './containercomponents/ListContainers' 
 import ContainerMain from './containercomponents/ContainerMain';
 
 
@@ -20,7 +19,7 @@ const HomePage = () => {
 
                     <br></br><br></br>
                     <div>
-                        <button className="button is-rounded is-success"><Link to={`/createcontainer`}>Create</Link></button>
+                        <button className="button is-rounded is-success"><Link to={`/createcontainer`}>Add a Container</Link></button>
                     </div>
                 </div>
             </div>

@@ -96,7 +96,7 @@ public class Food {
 		private String description;
 		private LocalDate expiration;
 		
-		//DELEGATING is for single argument. PROPERTIES is forr multi? 
+		//DELEGATING is for single argument. PROPERTIES is for multi? 
 		//Or can I can leave it as default when i introduce more parameters to the constructor?
 		@JsonCreator(mode = JsonCreator.Mode.PROPERTIES)
 		public FoodBuilder(@JsonProperty("name") String name) {

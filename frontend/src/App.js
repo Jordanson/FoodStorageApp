@@ -6,6 +6,7 @@ import HomePage from './components/HomePage'
 import NavBar from './components/Navbar'
 import CreateContainer from './components/containercomponents/CreateContainer'
 import ContainerMain from './components/containercomponents/ContainerMain'
+import ContainerContents from './components/containercomponents/ContainerContents'
 
 
 
@@ -15,7 +16,8 @@ const App = () => {
         <NavBar />
         <Switch>
           <Route path="/" exact component={HomePage}/>
-          <Route path="/listfood/:id" component={ListFood}/>
+          {/* <Route path="/listfood/:id" component={ListFood}/> */}
+          <Route path="/containercontents/:container" component={ContainerContents}/>
           <Route path="/listfood" component={ListFood}/>
           <Route path="/addfood" exact component={AddFoodForm}/>
           <Route path="/showcontainers" exact component={ContainerMain}/>

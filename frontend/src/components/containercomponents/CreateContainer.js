@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 
 
 const CreateContainer = () => {
-  const initialFormState = { name: "", description: "" };
+  // const initialFormState = { name: "", description: "" };
+  const initialFormState = { name: "" };
   const [container, setContainer] = useState(initialFormState);
 
   const handleInputChange = event => {  
@@ -35,8 +36,8 @@ const CreateContainer = () => {
       <label>Name</label>
       <input type="text" name="name" value={container.name} onChange={handleInputChange}/>
 
-      <label>Description</label>
-      <input type="text" name="description" value={container.description} onChange={handleInputChange}/>
+      {/* <label>Description</label>
+      <input type="text" name="description" value={container.description} onChange={handleInputChange}/> */}
       <button className="button is-primary is-light">CreateContainer</button>
     </form>
   )
