@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Route, useHistory } from 'react-router-dom'
+import ContainerContents from './ContainerContents';
 
 const ContainerMain = (props) => {
   const [containers, setContainers] = useState([]);
+  // const [showContainerContents, setShowContainerContents] = useState(false);
+  // const [selectedContainerId, setSelectedContainerId] = useState();
+  const history = useHistory();
   
   const getContainers = async () => {
     const url = "/api/containers";    
@@ -29,12 +33,19 @@ const ContainerMain = (props) => {
     }
   }
 
+
+  // const onButtonClick = (containerId) => {
+  //   setShowContainerContents(true)
+  //   setSelectedContainerId(containerId)
+  // }
+
   useEffect(() => {
     getContainers();  
   }, []);
 
+  
   return (
-    <div>
+    <div>   
       <strong>MY FOOD CONTAINERS</strong>
       <br></br><br></br>
 
@@ -43,16 +54,26 @@ const ContainerMain = (props) => {
           <li key={container.id}>
             <div>
               <button onClick={() => deleteContainer(container.id)} className="button is-rounded is-danger">Delete</button>
+              <button onClick={() => history.push(`/containercontents/${container.id}`, {container: container})} className="button is-primary">{container.name}</button>
+              
+
+              {/* <Route 
+              path="/ContainerContents" component={HomePage}/> */}
+
               {/* <Link to={`/containercontents/${container.id}`}>{container.name}</Link> */}
-              <Link to={{
+              {/* <Link to={{
                   pathname: `/containercontents/${container.name}`,
                   state: {container: container}
                 }}>{container.name}
-              </Link>
+              </Link> */}
             </div>
           </li>
         ))}
       </ul>  
+
+   
+      {/* {showContainerContents ? <ContainerContents containerId={selectedContainerId}  /> : null}   */}
+      
       
     </div>
   );

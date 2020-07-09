@@ -34,7 +34,7 @@ public class ContainerDAO {
 		
 		//execute query and get result list
 		List<Container> containers = query.getResultList();
-		System.out.println(containers);
+		//System.out.println(containers);
 		//return the results
 		return containers;
 	}

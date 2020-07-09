@@ -40,8 +40,7 @@ public class FoodService {
 	
 	@Transactional
 	public Container getFoodByContainer(long id) {
-		Container container = containerDAO.findById(id);
-		
+		Container container = containerDAO.findById(id);		
 		//this allows getFoodByContainer
 		Hibernate.initialize(container.getFoodList());
 

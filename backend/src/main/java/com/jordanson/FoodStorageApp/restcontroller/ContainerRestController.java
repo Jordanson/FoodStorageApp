@@ -35,6 +35,9 @@ public class ContainerRestController {
 
 	@GetMapping("/containers/{containerId}")
 	public Container getContainerByID(@PathVariable long containerId) {
+		
+		System.out.println("HELLO" + containerId);
+		
 		Container container = containerDAO.findById(containerId);
 		
 		if (container == null) {
