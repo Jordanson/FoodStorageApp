@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState} from 'react';
+
 
 const ContainerContents = (props) => {
   const [container, setContainer] = useState({});
@@ -18,15 +19,12 @@ const ContainerContents = (props) => {
   }
 
   fetchContainer();   
-      
+
   }, [props.match.params]);
 
-
-  
   return (
     <div>
-         <h1>{props.location.state.container.name}</h1> 
-         <h1>{container.name}</h1> 
+      <h1>{container.name}</h1> 
     </div>
   )
 }

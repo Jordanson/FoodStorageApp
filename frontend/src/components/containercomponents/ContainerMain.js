@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import { Link, Route, useHistory } from 'react-router-dom'
-import ContainerContents from './ContainerContents';
+import { useHistory } from 'react-router-dom'
+
 
 const ContainerMain = (props) => {
   const [containers, setContainers] = useState([]);
-  // const [showContainerContents, setShowContainerContents] = useState(false);
-  // const [selectedContainerId, setSelectedContainerId] = useState();
   const history = useHistory();
   
   const getContainers = async () => {
@@ -25,19 +23,13 @@ const ContainerMain = (props) => {
         fetch(`api/containers/${containerId}`, {
              method: 'DELETE',
         })
-        .then(res => res.json()) // or res.json()
+        .then(res => res.json())
         .then(res => console.log(res))
     } 
     else {
         return
     }
   }
-
-
-  // const onButtonClick = (containerId) => {
-  //   setShowContainerContents(true)
-  //   setSelectedContainerId(containerId)
-  // }
 
   useEffect(() => {
     getContainers();  
@@ -55,31 +47,13 @@ const ContainerMain = (props) => {
             <div>
               <button onClick={() => deleteContainer(container.id)} className="button is-rounded is-danger">Delete</button>
               <button onClick={() => history.push(`/containercontents/${container.id}`, {container: container})} className="button is-primary">{container.name}</button>
-              
-
-              {/* <Route 
-              path="/ContainerContents" component={HomePage}/> */}
-
-              {/* <Link to={`/containercontents/${container.id}`}>{container.name}</Link> */}
-              {/* <Link to={{
-                  pathname: `/containercontents/${container.name}`,
-                  state: {container: container}
-                }}>{container.name}
-              </Link> */}
             </div>
           </li>
         ))}
       </ul>  
-
-   
-      {/* {showContainerContents ? <ContainerContents containerId={selectedContainerId}  /> : null}   */}
-      
-      
     </div>
   );
 }
 
 export default ContainerMain;
-
-
 
